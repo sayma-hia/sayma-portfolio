@@ -1,0 +1,46 @@
+---
+title: "React in 2025: what's actually worth learning"
+excerpt: "Server components, the App Router, Zustand vs Redux — here's my honest take after using all of them in production."
+date: "2025-02-18"
+category: "Engineering"
+readTime: "9 min"
+slug: "react-in-2025"
+published: true
+---
+
+I've been writing React since 2018. I've seen Flux give way to Redux give way to Context give way to Zustand. I've migrated projects from Pages Router to App Router. Here's what I actually think is worth your attention in 2025.
+
+## Server Components: yes, learn them
+
+The mental model shift is real and takes time, but Server Components fundamentally change what React can do. Moving data fetching to the server eliminates entire categories of loading state problems.
+
+The key insight: you don't have to use them everywhere. Use them for data-heavy pages. Use Client Components for interactive bits. Mix and match.
+
+## The App Router: worth the migration cost
+
+The Pages Router still works. But if you're starting a new project or have budget for migration, the App Router's layout system and parallel routes are genuinely better.
+
+The catch: the error handling story is still maturing. `error.tsx` works, but complex nested error boundaries need careful thought.
+
+## State management in 2025
+
+The landscape has simplified considerably:
+
+- **Local state**: `useState` is still fine for most things.
+- **Server state**: React Query (TanStack Query) has won. Use it.
+- **Global UI state**: Zustand. Simple, fast, no boilerplate.
+- **Redux**: Only if you're maintaining an existing Redux codebase or have genuinely complex state management needs with a large team.
+
+I migrated two projects from Redux to Zustand + React Query in the past year. Both teams were significantly happier.
+
+## What I'd skip
+
+- **Context for server state**: This is the most common mistake I see. Context re-renders everything. Use React Query instead.
+- **Custom hooks that replicate React Query**: Just use React Query.
+- **Over-engineering state**: Most apps need far less state than developers think.
+
+## The honest take
+
+React in 2025 is genuinely good. The Server Component model solves real problems. The App Router patterns are mature enough to trust in production.
+
+Learn Server Components. Use React Query. Pick Zustand for global state. Ship.

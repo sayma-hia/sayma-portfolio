@@ -1,0 +1,40 @@
+---
+title: "Building AI features in production: what the tutorials don't tell you"
+excerpt: "Integrating LLMs into a real product is very different from the OpenAI quickstart. Here's what actually broke."
+date: "2025-04-28"
+category: "AI & LLMs"
+readTime: "8 min"
+slug: "building-ai-features-in-production"
+published: true
+---
+
+The OpenAI quickstart is deceptively clean. You send a message. You get a response. You think: this is easy.
+
+Then you try to ship it to real users.
+
+## What actually breaks in production
+
+### Latency
+
+LLM calls are slow. Users won't wait six seconds for a response. You need streaming almost immediately, and streaming introduces its own complexity — partial renders, error states mid-stream, reconnection logic.
+
+### Prompt consistency
+
+Your prompt works great in testing. Then a user inputs something you didn't anticipate, and the model hallucinates a response that breaks your UI's assumptions. You need output validation. You need fallbacks. You need to think carefully about what you're actually asking the model to do.
+
+### Cost at scale
+
+Token costs that seem trivial in development multiply fast with real usage. We had to instrument every LLM call — tracking input tokens, output tokens, model used, and cost per request — before we could make informed decisions about caching and model selection.
+
+### Context window management
+
+For Tulvo.ai, where users have long-running documents and whiteboards, feeding the entire context into every request isn't feasible. You end up building summarisation pipelines, retrieval layers, and careful context-trimming logic.
+
+## What actually works
+
+- **Stream everything.** Users tolerate slow if they can see progress.
+- **Validate outputs structurally.** Use function calling / structured outputs rather than hoping the model returns valid JSON.
+- **Cache aggressively.** Repeated questions with identical context shouldn't hit the API.
+- **Log everything** while you're learning the failure modes. You'll find patterns you didn't expect.
+
+The tutorials get you 20% of the way there. The other 80% is production engineering.

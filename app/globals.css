@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #0D2137;
+  --navy-light: #142A47;
+  --teal: #12A585;
+  --teal-dark: #0D8A6F;
+  --blue: #1A6E8A;
+  --white: #FFFFFF;
+  --off-white: #F7F9FB;
+  --text-dark: #1A1A2E;
+  --text-mid: #4A5568;
+  --text-muted: #7FA8C4;
+  --border: #E2E8F0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navy: #0D2137;
+  --color-navy-light: #142A47;
+  --color-teal: #12A585;
+  --color-teal-dark: #0D8A6F;
+  --color-blue-accent: #1A6E8A;
+  --color-off-white: #F7F9FB;
+  --color-text-dark: #1A1A2E;
+  --color-text-mid: #4A5568;
+  --color-text-muted: #7FA8C4;
+  --color-border: #E2E8F0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-dark);
+  background: var(--white);
+  font-family: system-ui, sans-serif;
+}
+
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
 }

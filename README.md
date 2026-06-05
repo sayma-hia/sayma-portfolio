@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sayma Saymon Hia — Personal Portfolio
 
-## Getting Started
+Personal portfolio website built with Next.js 14, Tailwind CSS, Framer Motion, and TypeScript.
 
-First, run the development server:
+## Setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy to Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Push this repo to GitHub.
+2. Go to [vercel.com](https://vercel.com) → New Project → import the repo.
+3. No environment variables required by default.
+4. Click Deploy.
 
-## Learn More
+## Adding your CV
 
-To learn more about Next.js, take a look at the following resources:
+Place your CV PDF at `public/cv/CV.pdf`. The "Download CV" button links there automatically.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How to publish a new blog post
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create a new `.mdx` file in `content/blog/`, e.g. `content/blog/my-new-post.mdx`.
+2. Add frontmatter at the top:
 
-## Deploy on Vercel
+```mdx
+---
+title: "Your post title"
+excerpt: "A short 1-2 sentence summary shown on the blog listing page."
+date: "YYYY-MM-DD"
+category: "Engineering"
+readTime: "5 min"
+slug: "my-new-post"
+published: true
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Your post content in Markdown goes here.
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Available categories: `Engineering`, `AI & LLMs`, `Career`, `Women in Tech`, `Personal`.
+4. Set `published: false` to keep a draft hidden.
+5. The slug must match the filename (without `.mdx`).
+
+## Setting up the contact form
+
+The contact form uses [Formspree](https://formspree.io):
+
+1. Create a free account at formspree.io.
+2. Create a new form and copy your Form ID.
+3. In `components/ContactForm.tsx`, replace `YOUR_FORM_ID` with your actual form ID.
+
+## Updating content
+
+All non-blog content (bio, experience, projects, skills) lives in `lib/data.ts` as typed constants — edit that file to update any page content without touching the components.
