@@ -31,11 +31,11 @@ export default function ProjectCard({ project }: Props) {
     >
       <div className="flex items-start justify-between gap-2">
         <div
-          className={`w-10 h-10 rounded-lg ${project.logo ? "bg-white border border-[#E2E8F0]" : accentClasses[project.accentColor]} flex items-center justify-center overflow-hidden`}
+          className={`w-12 h-12 rounded-xl flex-shrink-0 ${project.logo ? "bg-white border border-[#E2E8F0] shadow-sm" : accentClasses[project.accentColor]} flex items-center justify-center overflow-hidden`}
         >
           {project.logo ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={project.logo} alt={project.name} className="w-full h-full object-contain p-1" />
+            <img src={project.logo} alt={project.name} className="w-8 h-8 object-contain" />
           ) : (
             <span className="text-white font-bold text-xs">
               {project.name.slice(0, 2).toUpperCase()}
