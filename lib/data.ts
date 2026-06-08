@@ -29,7 +29,7 @@ Outside of commercial work, I volunteered to build an e-training platform for UN
 
 export const currentRole = {
   title: "Senior Software Engineer",
-  company: "Studio Dev Hub · Tulvo.ai",
+  company: "Studio Dev Hub · Tulvo.io",
 };
 
 export const education = [
@@ -131,7 +131,7 @@ export const experience: ExperienceItem[] = [
     focusArea: "AI product engineering, enterprise team leadership",
     bullets: [
       "Managing 4-person Enterprise Developer Team",
-      "Leading feature development for Tulvo.ai — AI workspace covering docs, whiteboards, dashboards, AI reporting, automations, and integrations",
+      "Leading feature development for Tulvo.io — AI workspace covering docs, whiteboards, dashboards, AI reporting, automations, and integrations",
       "LLM integration and AI agent framework implementation",
       "Reporting to Rubel Hasan, Co-Founder & MD",
     ],
@@ -232,17 +232,19 @@ export type Project = {
   noLiveNote?: string;
   accentColor: "teal" | "blue" | "amber" | "purple" | "green" | "navy";
   role?: string;
+  logo?: string;
 };
 
 export const projects: Project[] = [
   {
-    name: "Tulvo.ai",
+    name: "Tulvo.io",
     description:
       "AI-powered all-in-one team workspace combining documents, whiteboards, dashboards, AI reporting, automations, and integrations.",
     stack: ["NextJS", "TypeScript", "NestJS", "OpenAI API", "AI agents"],
     liveUrl: "https://www.tulvo.ai",
     accentColor: "teal",
     role: "Lead engineer, enterprise team features",
+    logo: "/logos/tulvo.png",
   },
   {
     name: "TextaLyz",
@@ -250,7 +252,8 @@ export const projects: Project[] = [
       "AI-powered text analysis tool that analyses support calls and chat conversations to identify SWOT indicators and generate priority-based alerts.",
     stack: ["NextJS", "TypeScript", "NestJS", "OpenAI API"],
     accentColor: "blue",
-    noLiveNote: "Internal tool — no public link",
+    liveUrl: "https://www.producthunt.com/products/textalyz",
+    logo: "/logos/textalyz.avif",
   },
   {
     name: "Vendidit",
@@ -259,6 +262,7 @@ export const projects: Project[] = [
     stack: ["ReactJS", "TypeScript", "NestJS", "NextJS"],
     liveUrl: "https://vendidit.com",
     accentColor: "amber",
+    logo: "/logos/vendidit.svg",
   },
   {
     name: "Skribe.ai",
@@ -267,6 +271,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "React", "TypeScript"],
     liveUrl: "https://skribe.ai",
     accentColor: "purple",
+    logo: "/logos/skribe.png",
   },
   {
     name: "SET for Women",
