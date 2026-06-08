@@ -36,12 +36,14 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link
-          href="/"
-          className="text-xl font-semibold tracking-tight text-[#1B3A6B]"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-        >
-          Sayma Hia
+        <Link href="/" className="flex flex-col gap-[3px] group">
+          <span
+            className="text-[18px] font-medium text-white leading-none tracking-tight"
+            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          >
+            Sayma Hia
+          </span>
+          <span className="block w-8 h-[2px] bg-[#12A585] rounded-full" />
         </Link>
 
         {/* Desktop nav */}

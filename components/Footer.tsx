@@ -20,13 +20,14 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
           {/* Brand */}
           <div>
-            <div className="mb-2">
+            <div className="flex flex-col gap-[3px] mb-2">
               <span
-                className="text-xl font-semibold text-white"
+                className="text-[18px] font-medium text-white leading-none tracking-tight"
                 style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
               >
                 Sayma Hia
               </span>
+              <span className="block w-8 h-[2px] bg-[#12A585] rounded-full" />
             </div>
             <p className="text-[#7FA8C4] text-sm max-w-xs">
               Senior Software Engineer building AI-powered products.
