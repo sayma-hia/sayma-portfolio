@@ -20,11 +20,13 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-9 h-9 rounded bg-[#12A585] flex items-center justify-center text-white font-bold text-sm">
-                SSH
+            <div className="mb-2">
+              <span
+                className="text-xl font-semibold text-white"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                Sayma Hia
               </span>
-              <span className="font-semibold">{siteConfig.name}</span>
             </div>
             <p className="text-[#7FA8C4] text-sm max-w-xs">
               Senior Software Engineer building AI-powered products.

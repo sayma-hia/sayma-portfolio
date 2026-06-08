@@ -1,72 +1,58 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { stats } from "@/lib/data";
+import { useEffect, useRef, useState } from 'react';
 
-function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
+function useCountUp(target: number, duration: number = 1500) {
   const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const started = useRef(false);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          let start = 0;
-          const duration = 1200;
-          const step = (target / duration) * 16;
-          const interval = setInterval(() => {
-            start += step;
-            if (start >= target) {
-              setCount(target);
-              clearInterval(interval);
-            } else {
-              setCount(Math.floor(start));
-            }
-          }, 16);
-        }
-      },
-      { threshold: 0.5 }
+      ([entry]) => { if (entry.isIntersecting) setStarted(true); },
+      { threshold: 0.3 }
     );
-    observer.observe(el);
+    if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [target]);
+  }, []);
 
+  useEffect(() => {
+    if (!started) return;
+    let start = 0;
+    const step = Math.ceil(target / (duration / 16));
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { setCount(target); clearInterval(timer); }
+      else setCount(start);
+    }, 16);
+    return () => clearInterval(timer);
+  }, [started, target, duration]);
+
+  return { count, ref };
+}
+
+function StatItem({ value, suffix, label, prefix = '' }: {
+  value: number; suffix: string; label: string; prefix?: string;
+}) {
+  const { count, ref } = useCountUp(value);
   return (
-    <span ref={ref}>
-      {count}
-      {suffix}
-    </span>
+    <div ref={ref} className="flex flex-col items-center gap-1 px-6">
+      <span className="text-3xl font-bold text-white">
+        {prefix}{count}{suffix}
+      </span>
+      <span className="text-sm text-[#7FA8C4] text-center">{label}</span>
+    </div>
   );
 }
 
 export default function StatsBar() {
   return (
-    <div className="bg-[#0D2137] border-t border-white/10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {stats.map((stat) => {
-            const isNumeric = /^\d+/.test(stat.value);
-            const numericPart = isNumeric ? parseInt(stat.value) : null;
-            const suffix = isNumeric ? stat.value.replace(/\d+/, "") : "";
-
-            return (
-              <div key={stat.label}>
-                <div className="text-3xl font-bold text-white mb-1">
-                  {numericPart !== null ? (
-                    <CountUp target={numericPart} suffix={suffix} />
-                  ) : (
-                    stat.value
-                  )}
-                </div>
-                <div className="text-[#7FA8C4] text-sm">{stat.label}</div>
-              </div>
-            );
-          })}
-        </div>
+    <div className="bg-[#0D2137] border-t border-white/10 py-8">
+      <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-8">
+        <StatItem value={7}  suffix="+" label="Years of experience" />
+        <StatItem value={6}  suffix=""  label="Products shipped" />
+        <StatItem value={4}  suffix=""  label="Engineers led" />
+        <StatItem value={77} suffix=""  label="PTE English score" />
       </div>
     </div>
   );

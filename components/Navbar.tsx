@@ -36,11 +36,12 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <span className="w-9 h-9 rounded bg-[#12A585] flex items-center justify-center text-white font-bold text-sm tracking-wide group-hover:bg-[#0D8A6F] transition-colors">
-            SSH
-          </span>
-          <span className="text-white font-semibold tracking-wide text-sm">sayma.dev</span>
+        <Link
+          href="/"
+          className="text-xl font-semibold tracking-tight text-[#1B3A6B]"
+          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+        >
+          Sayma Hia
         </Link>
 
         {/* Desktop nav */}
