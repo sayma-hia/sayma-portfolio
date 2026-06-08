@@ -102,7 +102,11 @@ export const skills = [
   },
 ];
 
-export const whyHireMe = `From the National Helpline Centre at Bangladesh's Ministry of Women & Children Affairs to production AI agents at Tulvo.ai — my work spans the full spectrum of software engineering. I built for UN Women's SET for Women initiative, led enterprise teams with US clients, and shipped AI features in production. I bring technical depth, cross-sector experience, and the ability to lead teams and scope projects independently.`;
+export const whyHireMe = `I've shipped software at national scale — from government helpline infrastructure protecting women across Bangladesh, to AI-powered workspace tools used by enterprise teams globally. My career doesn't fit neatly into one box. Government infrastructure. Legal-tech for US clients. AI-powered SaaS. A government e-training programme empowering thousands of women nationwide under Bangladesh's Ministry of Women & Children Affairs. Across every context, I've owned the technical decisions, led the people, and delivered.
+
+The best engineering I've done has always been in service of something larger than the code itself. What I bring isn't just a stack — it's 7+ years of knowing when to move fast, when to slow down, and how to make the right technical call when the stakes are real.
+
+If your team builds with intention and needs an engineer who thinks like a product leader — let's talk.`;
 
 export type ExperienceItem = {
   title: string;

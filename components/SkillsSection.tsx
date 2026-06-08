@@ -36,7 +36,11 @@ export default function SkillsSection() {
           <AnimatedSection delay={0.2}>
             <div className="bg-[#F7F9FB] rounded-xl p-8 h-full flex flex-col justify-center">
               <h3 className="font-semibold text-[#1A1A2E] text-xl mb-4">Why work with me</h3>
-              <p className="text-[#4A5568] leading-relaxed">{whyHireMe}</p>
+              <div className="space-y-4">
+                {whyHireMe.split("\n\n").map((para, i) => (
+                  <p key={i} className="text-[#4A5568] leading-relaxed">{para}</p>
+                ))}
+              </div>
             </div>
           </AnimatedSection>
         </div>
